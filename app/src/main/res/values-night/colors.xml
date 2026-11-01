@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Иконка приложения не зависит от темы — эта папка переопределяет только цвет окна/статус-бара. -->
+    <color name="window_background">#0E1621</color>
+</resources>

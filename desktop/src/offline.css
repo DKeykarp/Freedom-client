@@ -1,0 +1,15 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f5f7fa; --panel: #ffffff; --text: #101820; --muted: #5b6b7c; --accent: #2b8cff; --danger: #c62828;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0e1621; --panel: #17212b; --text: #e8eef4; --muted: #7f91a4; --accent: #2b8cff; --danger: #e5484d; }
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--text); font: 15px/1.4 system-ui, "Segoe UI", Roboto, sans-serif; display: grid; place-items: center; }
+main { width: min(440px, 92vw); background: var(--panel); border-radius: 16px; padding: 28px; display: grid; gap: 10px; justify-items: center; text-align: center; }
+h1 { margin: 0; font-size: 20px; } p { margin: 0; }
+.err { color: var(--danger); font-size: 14px; } .muted { color: var(--muted); } small { font-size: 12px; }
+button { margin-top: 6px; padding: 11px 28px; border: 0; border-radius: 10px; background: var(--accent); color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+button:disabled { opacity: .6; cursor: default; }

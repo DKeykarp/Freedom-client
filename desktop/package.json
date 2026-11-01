@@ -1,0 +1,63 @@
+{
+  "name": "freedom-chat",
+  "productName": "Freedom",
+  "version": "1.1.0",
+  "description": "Настольный клиент Freedom для Windows и Linux",
+  "main": "src/main.js",
+  "private": true,
+  "license": "UNLICENSED",
+  "author": { "name": "Freedom", "email": "freedom@example.com" },
+  "homepage": "https://example.com/freedom",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --win",
+    "publish:local": "node scripts/publish.js"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "24.13.3"
+  },
+  "build": {
+    "appId": "com.freedom.chat.desktop",
+    "productName": "Freedom",
+    "copyright": "Freedom",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["src/**/*", "package.json"],
+    "asar": true,
+    "linux": {
+      "target": [
+        { "target": "deb", "arch": ["x64"] },
+        { "target": "rpm", "arch": ["x64"] }
+      ],
+      "icon": "build/icon.png",
+      "category": "Network",
+      "executableName": "freedom",
+      "maintainer": "Freedom <freedom@example.com>",
+      "synopsis": "Защищённый мессенджер Freedom",
+      "description": "Настольный клиент Freedom: сообщения, голосовые, видео и звонки со сквозным шифрованием.",
+      "artifactName": "Freedom-${version}-linux-${arch}.${ext}",
+      "desktop": {
+        "Name": "Freedom",
+        "Comment": "Защищённый мессенджер",
+        "Categories": "Network;InstantMessaging;Chat;",
+        "Keywords": "chat;messenger;e2ee;encrypted;"
+      }
+    },
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.png",
+      "artifactName": "Freedom-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Freedom",
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

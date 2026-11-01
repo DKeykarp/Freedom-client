@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Только HTTPS: открытый http запрещён для всего приложения. -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- Промежуточный сертификат ZeroSSL добавлен как якорь доверия только для нашего сервера: на старых
+         версиях Android, где в системном хранилище нет корня Sectigo R46, цепочка всё равно проверится.
+         При продлении сертификата, если ca_bundle.crt изменился, замените res/raw/zerossl_intermediate.crt. -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="false">contora.is-local.org</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="@raw/zerossl_intermediate" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>
